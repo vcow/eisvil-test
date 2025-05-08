@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 198babe9f4f549cd81b216016100edbd, type: 3}
+  m_Name: ScreenLockerSettings
+  m_EditorClassIdentifier: 
+  _screenLockers:
+  - {fileID: 2848497834602071310, guid: 46bf80026d4344775ad80b74ce66a2d5, type: 3}
+  - {fileID: 6415055555745546880, guid: 1fe4343def7a144e4afd35b31471954f, type: 3}
