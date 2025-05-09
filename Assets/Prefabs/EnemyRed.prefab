@@ -167,7 +167,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5116208557951203496, guid: 4d1b539b6bbdf41db87fed741c2f5bb5, type: 3}
       propertyPath: m_Name
-      value: EnemyRed Variant
+      value: EnemyRed
       objectReference: {fileID: 0}
     - target: {fileID: 5116208557951203496, guid: 4d1b539b6bbdf41db87fed741c2f5bb5, type: 3}
       propertyPath: m_Layer
@@ -250,8 +250,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8a11f11b7a447458d260d8993389746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemyType: 1
   _hitForce: 35
   _corpseObstacle: {fileID: 6099131759262802243}
+  _alertCharacterDistance: 8
+  _runAwayCharacterDistance: 5
 --- !u!54 &4783415376763875510
 Rigidbody:
   m_ObjectHideFlags: 0

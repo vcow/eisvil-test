@@ -1,3 +1,4 @@
+using GameScene.Logic;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -9,6 +10,7 @@ namespace GameScene
 	{
 		protected override void Configure(IContainerBuilder builder)
 		{
+			builder.Register<SceneContext>(Lifetime.Singleton);
 		}
 	}
 }

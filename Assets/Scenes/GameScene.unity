@@ -274,6 +274,11 @@ MonoBehaviour:
   m_Center: {x: 0, y: 0, z: 0}
   m_Area: 1
   m_AffectedAgents: ffffffff
+--- !u!1 &645869499 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3779844014622209913, guid: 4d78d9e65544f4337b2f0b349169440c, type: 3}
+  m_PrefabInstance: {fileID: 8189727550862463643}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &783974977
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -427,7 +432,7 @@ GameObject:
   - component: {fileID: 820912316}
   - component: {fileID: 820912315}
   - component: {fileID: 820912320}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -772,6 +777,7 @@ MonoBehaviour:
   autoRun: 1
   autoInjectGameObjects:
   - {fileID: 1476242856}
+  - {fileID: 645869499}
 --- !u!4 &882338955
 Transform:
   m_ObjectHideFlags: 0
@@ -1133,9 +1139,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0.1, y: 0.5, z: 0.3}
-  ShoulderOffset: {x: 1.85, y: -0.07, z: -2.04}
+  ShoulderOffset: {x: 1.85, y: -0.07, z: -2.61}
   VerticalArmLength: 0.4
-  CameraSide: 0.58
+  CameraSide: 0.6
   CameraDistance: 0.86
   AvoidObstacles:
     Enabled: 1
@@ -1198,7 +1204,7 @@ Transform:
   m_GameObject: {fileID: 1082177166}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.29599994, y: 1.696, z: -2.9}
+  m_LocalPosition: {x: 0.5200001, y: 1.696, z: -2.632}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1270,6 +1276,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fieldSize: {x: 180, y: 180}
+  _enemyPrefabs:
+  - _enemyPrefab: {fileID: 30032096142740611, guid: 84dc2510c582f4586af34b3c8b602a94, type: 3}
+    _countFrom: 20
+    _countTo: 30
 --- !u!4 &1476242858
 Transform:
   m_ObjectHideFlags: 0
@@ -1378,7 +1388,7 @@ Transform:
   m_GameObject: {fileID: 1772554124}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.29599994, y: 1.696, z: -2.9}
+  m_LocalPosition: {x: 0.5200001, y: 1.696, z: -2.632}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1644,6 +1654,10 @@ PrefabInstance:
     - target: {fileID: 8085484287032165810, guid: 4d78d9e65544f4337b2f0b349169440c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8111261571300261493, guid: 4d78d9e65544f4337b2f0b349169440c, type: 3}
+      propertyPath: _rotationSpeed
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

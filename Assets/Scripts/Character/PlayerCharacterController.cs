@@ -1,6 +1,8 @@
+using GameScene.Logic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
+using VContainer;
 
 namespace Character
 {
@@ -9,6 +11,8 @@ namespace Character
 	{
 		[SerializeField] private float _rotationSpeed = 10f;
 		[SerializeField] private bool _alwaysRun = true;
+
+		[Inject] private readonly SceneContext _sceneContext;
 
 		private NavMeshAgent _navMeshAgent;
 		private HumanoidCharacterController _humanoid;
@@ -65,14 +69,17 @@ namespace Character
 				var moveDirection = new Vector3(_moveInput.Value.x, 0, _moveInput.Value.y);
 				moveDirection = _camera.transform.TransformDirection(moveDirection);
 				moveDirection.y = 0f;
-				_navMeshAgent.Move(moveDirection * _navMeshAgent.speed * Time.deltaTime);
+				_navMeshAgent.Move(moveDirection * (_navMeshAgent.speed * Time.deltaTime));
 			}
 
+			var t = transform;
 			if (_lookInput.HasValue)
 			{
 				var yaw = _lookInput.Value.x * _rotationSpeed * Time.deltaTime;
-				transform.Rotate(0f, yaw, 0f);
+				t.Rotate(0f, yaw, 0f);
 			}
+
+			_sceneContext.SetPlayerPosition(t.position);
 		}
 	}
 }

@@ -1,7 +1,9 @@
 using System;
 using Character;
+using NUnit.Framework;
 using Plugins.vcow.ScreenLocker;
 using UnityEngine;
+using UnityEngine.AI;
 using VContainer;
 using Random = UnityEngine.Random;
 
@@ -19,6 +21,7 @@ namespace GameScene
 		}
 
 		[Inject] private readonly IScreenLockerManager _screenLockerManager;
+		[Inject] private readonly IObjectResolver _container;
 
 		[SerializeField, Header("Enemy spawn")] private Vector2 _fieldSize;
 		[SerializeField] private EnemyPrefabRecord[] _enemyPrefabs;
@@ -50,6 +53,7 @@ namespace GameScene
 			_gizmoPoints[2] = new Vector3(-halfSize.x, yDistance, -halfSize.y);
 			_gizmoPoints[3] = new Vector3(-halfSize.x, yDistance, halfSize.y);
 			Gizmos.DrawLineStrip(_gizmoPoints, true);
+			Gizmos.color = color;
 		}
 
 		private void OnStart()
@@ -58,6 +62,10 @@ namespace GameScene
 
 		private void SpawnEnemies()
 		{
+			var halfSize = _fieldSize * 0.5f;
+			Assert.IsTrue(halfSize is { x: > 0f, y: > 0f }, "Field size can't be zero or negative.");
+
+			var layerMask = LayerMask.NameToLayer("Ground");
 			foreach (var enemyPrefabRecord in _enemyPrefabs)
 			{
 				var min = Mathf.Max(0, Mathf.Min(enemyPrefabRecord._countFrom, enemyPrefabRecord._countTo));
@@ -70,7 +78,31 @@ namespace GameScene
 				var count = min + Random.Range(0, max - min + 1);
 				for (var i = 0; i < count; ++i)
 				{
-					
+					Transform instance = null;
+					const int maxTrySpawn = 10;
+					const float enemyYPosition = 0f;
+					const float safeArea = 2f;
+					for (var j = 0; j < maxTrySpawn; ++j)
+					{
+						var pos = new Vector3(Random.Range(-halfSize.x, halfSize.x), enemyYPosition, Random.Range(-halfSize.y, halfSize.y));
+						if (NavMesh.SamplePosition(pos, out var hit, safeArea, NavMesh.AllAreas) &&
+						    !Physics.CheckSphere(hit.position, safeArea, layerMask))
+						{
+							var enemy = Instantiate(enemyPrefabRecord._enemyPrefab);
+							instance = enemy.transform;
+							_container.Inject(enemy);
+							instance.position = pos;
+							break;
+						}
+					}
+
+					if (!instance)
+					{
+						Debug.LogError("Can't spawn enemies: no more free space.");
+						return;
+					}
+
+					instance.rotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
 				}
 			}
 		}
