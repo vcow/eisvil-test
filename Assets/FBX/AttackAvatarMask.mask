@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AttackAvatarMask
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Armature
+    m_Weight: 0
+  - m_Path: Armature/foot_ik.L
+    m_Weight: 0
+  - m_Path: Armature/foot_ik.L/foot_ik.L_end
+    m_Weight: 0
+  - m_Path: Armature/foot_ik.R
+    m_Weight: 0
+  - m_Path: Armature/foot_ik.R/foot_ik.R_end
+    m_Weight: 0
+  - m_Path: Armature/knee_pole.L
+    m_Weight: 0
+  - m_Path: Armature/knee_pole.L/knee_pole.L_end
+    m_Weight: 0
+  - m_Path: Armature/knee_pole.R
+    m_Weight: 0
+  - m_Path: Armature/knee_pole.R/knee_pole.R_end
+    m_Weight: 0
+  - m_Path: Armature/root
+    m_Weight: 0
+  - m_Path: Armature/root/arm_ik.L
+    m_Weight: 0
+  - m_Path: Armature/root/arm_ik.L/arm_ik.L_end
+    m_Weight: 0
+  - m_Path: Armature/root/arm_ik.R
+    m_Weight: 0
+  - m_Path: Armature/root/arm_ik.R/arm_ik.R_end
+    m_Weight: 0
+  - m_Path: Armature/root/loket_pole.L
+    m_Weight: 0
+  - m_Path: Armature/root/loket_pole.L/loket_pole.L_end
+    m_Weight: 0
+  - m_Path: Armature/root/loket_pole.R
+    m_Weight: 0
+  - m_Path: Armature/root/loket_pole.R/loket_pole.R_end
+    m_Weight: 0
+  - m_Path: Armature/root/pelvis.L
+    m_Weight: 0
+  - m_Path: Armature/root/pelvis.L/hip.L
+    m_Weight: 0
+  - m_Path: Armature/root/pelvis.L/hip.L/leg.L
+    m_Weight: 0
+  - m_Path: Armature/root/pelvis.L/hip.L/leg.L/leg.L_end
+    m_Weight: 0
+  - m_Path: Armature/root/pelvis.R
+    m_Weight: 0
+  - m_Path: Armature/root/pelvis.R/hip.R
+    m_Weight: 0
+  - m_Path: Armature/root/pelvis.R/hip.R/leg.R
+    m_Weight: 0
+  - m_Path: Armature/root/pelvis.R/hip.R/leg.R/leg.R_end
+    m_Weight: 0
+  - m_Path: Armature/root/spine1
+    m_Weight: 0
+  - m_Path: Armature/root/spine1/spine2
+    m_Weight: 1
+  - m_Path: Armature/root/spine1/spine2/shoulder.L
+    m_Weight: 1
+  - m_Path: Armature/root/spine1/spine2/shoulder.L/forearm.L
+    m_Weight: 1
+  - m_Path: Armature/root/spine1/spine2/shoulder.L/forearm.L/arm.L
+    m_Weight: 1
+  - m_Path: Armature/root/spine1/spine2/shoulder.L/forearm.L/arm.L/arm.L_end
+    m_Weight: 1
+  - m_Path: Armature/root/spine1/spine2/shoulder.R
+    m_Weight: 1
+  - m_Path: Armature/root/spine1/spine2/shoulder.R/forearm.R
+    m_Weight: 1
+  - m_Path: Armature/root/spine1/spine2/shoulder.R/forearm.R/arm.R
+    m_Weight: 1
+  - m_Path: Armature/root/spine1/spine2/shoulder.R/forearm.R/arm.R/weapon
+    m_Weight: 1
+  - m_Path: Armature/root/spine1/spine2/shoulder.R/forearm.R/arm.R/weapon/weapon_end
+    m_Weight: 1
+  - m_Path: Armature/root/spine1/spine2/spine3
+    m_Weight: 1
+  - m_Path: Armature/root/spine1/spine2/spine3/neck
+    m_Weight: 1
+  - m_Path: Armature/root/spine1/spine2/spine3/neck/head
+    m_Weight: 1
+  - m_Path: Armature/root/spine1/spine2/spine3/neck/head/head_end
+    m_Weight: 1
+  - m_Path: Man
+    m_Weight: 0
