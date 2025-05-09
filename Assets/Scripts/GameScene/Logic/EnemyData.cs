@@ -1,5 +1,5 @@
 using System;
-using Character;
+using GameScene.Character;
 
 namespace GameScene.Logic
 {

@@ -154,6 +154,7 @@ MonoBehaviour:
   autoInjectGameObjects: []
   _screenLockerSettings: {fileID: 11400000, guid: 5fa0dbfb9c1594dfead12064af40c912, type: 2}
   _windowManagerSettings: {fileID: 11400000, guid: e40c8385c3ebe4527a6ec4ef3412a9de, type: 2}
+  _questSettings: {fileID: 11400000, guid: b2918500c64ab4c6fa2318d76a5ae105, type: 2}
 --- !u!4 &726035093
 Transform:
   m_ObjectHideFlags: 0

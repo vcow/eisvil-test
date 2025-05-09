@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 
-namespace Character
+namespace GameScene.Character
 {
 	[DisallowMultipleComponent, RequireComponent(typeof(NavMeshAgent))]
 	public class HumanoidCharacterController : MonoBehaviour

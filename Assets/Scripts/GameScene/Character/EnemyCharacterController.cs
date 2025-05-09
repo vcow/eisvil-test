@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using VContainer;
 
-namespace Character
+namespace GameScene.Character
 {
 	[DisallowMultipleComponent, RequireComponent(typeof(NavMeshAgent),
 		 typeof(HumanoidCharacterController), typeof(Collider))]

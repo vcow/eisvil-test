@@ -1,10 +1,11 @@
 using GameScene.Logic;
+using Plugins.vcow.TouchHelper;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
 using VContainer;
 
-namespace Character
+namespace GameScene.Character
 {
 	[DisallowMultipleComponent, RequireComponent(typeof(NavMeshAgent), typeof(HumanoidCharacterController))]
 	public class PlayerCharacterController : MonoBehaviour
@@ -64,6 +65,16 @@ namespace Character
 
 		private void Update()
 		{
+			if (TouchHelper.IsLocked)
+			{
+				if (_humanoid.Move)
+				{
+					_humanoid.Move = false;
+				}
+
+				return;
+			}
+
 			if (_moveInput.HasValue)
 			{
 				var moveDirection = new Vector3(_moveInput.Value.x, 0, _moveInput.Value.y);

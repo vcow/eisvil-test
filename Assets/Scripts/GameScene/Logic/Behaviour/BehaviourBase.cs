@@ -1,5 +1,5 @@
 using System;
-using Character;
+using GameScene.Character;
 using UnityEngine;
 
 namespace GameScene.Logic.Behaviour

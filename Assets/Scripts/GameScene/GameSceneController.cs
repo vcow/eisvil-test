@@ -1,7 +1,11 @@
 using System;
-using Character;
+using System.Collections.Generic;
+using System.Linq;
+using GameScene.Character;
+using GameScene.Quest.Controller;
 using NUnit.Framework;
 using Plugins.vcow.ScreenLocker;
+using R3;
 using UnityEngine;
 using UnityEngine.AI;
 using VContainer;
@@ -22,9 +26,12 @@ namespace GameScene
 
 		[Inject] private readonly IScreenLockerManager _screenLockerManager;
 		[Inject] private readonly IObjectResolver _container;
+		[Inject] private readonly IReadOnlyList<QuestControllerBase> _questList;
 
 		[SerializeField, Header("Enemy spawn")] private Vector2 _fieldSize;
 		[SerializeField] private EnemyPrefabRecord[] _enemyPrefabs;
+
+		private readonly CompositeDisposable _disposables = new();
 
 		private Vector3[] _gizmoPoints = new Vector3[4];
 
@@ -40,6 +47,11 @@ namespace GameScene
 			{
 				OnStart();
 			}
+		}
+
+		private void OnDestroy()
+		{
+			_disposables.Dispose();
 		}
 
 		private void OnDrawGizmos()
@@ -58,6 +70,21 @@ namespace GameScene
 
 		private void OnStart()
 		{
+			if (_disposables.IsDisposed)
+			{
+				return;
+			}
+
+			Observable.CombineLatest(_questList.Select(quest => quest.IsCompleted))
+				.Where(completes => completes.All(b => b))
+				.Take(1)
+				.Subscribe(_ => OnWin())
+				.AddTo(_disposables);
+		}
+
+		private void OnWin()
+		{
+			throw new NotImplementedException();
 		}
 
 		private void SpawnEnemies()
