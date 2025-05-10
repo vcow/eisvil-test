@@ -31,6 +31,26 @@ MonoBehaviour:
     m_Key: ok
     m_Metadata:
       m_Items: []
+  - m_Id: 727009931026432
+    m_Key: done
+    m_Metadata:
+      m_Items: []
+  - m_Id: 752063876161536
+    m_Key: MinTimeInGame_description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 752371725492224
+    m_Key: RedEnemiesKilled_description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 752539963219968
+    m_Key: BlueEnemiesKilled_description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 752817957494784
+    m_Key: TotalEnemiesKilled_description
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace GameScene.Quest.Controller
 {
-	public abstract class EnemiesKilledQuestControllerBase : QuestControllerBase, IDisposable
+	public abstract class EnemiesKilledQuestControllerBase : QuestControllerBase
 	{
 		private readonly ReactiveProperty<bool> _isCompleted;
 		private readonly ReactiveProperty<float> _progress;
@@ -14,7 +14,7 @@ namespace GameScene.Quest.Controller
 		public override ReadOnlyReactiveProperty<float> Progress => _progress;
 
 		protected EnemiesKilledQuestControllerBase(int numEnemies, SceneContext sceneContext, EnemyType enemyType,
-			QuestTriggerType triggerType) : base(triggerType)
+			QuestTriggerType triggerType) : base(triggerType, new object[] { numEnemies })
 		{
 			_isCompleted = new ReactiveProperty<bool>(false).AddTo(_disposables);
 

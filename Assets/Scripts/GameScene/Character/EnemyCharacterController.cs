@@ -41,7 +41,7 @@ namespace GameScene.Character
 			_currentBehaviour?.Dispose();
 			_currentBehaviour = null;
 
-			if (_enemyData is { IsDead: true })
+			if (_enemyData is { IsDead: false })
 			{
 				_enemyData.SetIsDead();
 			}
@@ -117,7 +117,7 @@ namespace GameScene.Character
 			_currentBehaviour?.Dispose();
 			_currentBehaviour = null;
 
-			if (_enemyData is { IsDead: true })
+			if (_enemyData is { IsDead: false })
 			{
 				_enemyData.SetIsDead();
 			}

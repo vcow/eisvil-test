@@ -9,6 +9,7 @@ namespace GameScene.Quest.Controller
 	{
 		private readonly string _descriptionKey;
 		private readonly ReactiveProperty<string> _description = new();
+		private readonly object[] _descriptionArgs;
 
 		// ReSharper disable once InconsistentNaming
 		protected readonly CompositeDisposable _disposables = new();
@@ -17,21 +18,24 @@ namespace GameScene.Quest.Controller
 		public abstract ReadOnlyReactiveProperty<bool> IsCompleted { get; }
 		public abstract ReadOnlyReactiveProperty<float> Progress { get; }
 
-		protected QuestControllerBase(QuestTriggerType triggerType)
+		protected QuestControllerBase(QuestTriggerType triggerType, object[] descriptionArgs)
 		{
 			_descriptionKey = $"{triggerType}_description";
+			_descriptionArgs = descriptionArgs;
+
 			Observable.FromEvent<Action<Locale>, Locale>(
 					h => locale => h(locale),
 					h => LocalizationSettings.SelectedLocaleChanged += h,
 					h => LocalizationSettings.SelectedLocaleChanged -= h)
 				.Subscribe(_ => ValidateDescriptionText())
 				.AddTo(_disposables);
+			ValidateDescriptionText();
 		}
 
 		private async void ValidateDescriptionText()
 		{
 			var text = await LocalizationSettings.StringDatabase.GetLocalizedStringAsync(_descriptionKey).Task;
-			_description.Value = text;
+			_description.Value = string.IsNullOrEmpty(text) ? string.Empty : string.Format(text, _descriptionArgs);
 		}
 
 		public virtual void Dispose()

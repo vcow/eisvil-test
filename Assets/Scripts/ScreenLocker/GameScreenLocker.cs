@@ -26,13 +26,19 @@ namespace ScreenLocker
 			var canvasGroup = GetComponent<CanvasGroup>();
 
 			const float deactivateDurationSec = 1f;
-			
+
 			Assert.IsNull(_tween);
 			State = ScreenLockerState.ToInactive;
 			_tween = canvasGroup.DOFade(0, deactivateDurationSec).SetEase(Ease.Linear)
 				.OnComplete(() =>
 				{
 					_tween = null;
+					if (_locker.HasValue)
+					{
+						TouchHelper.Unlock(_locker.Value);
+						_locker = null;
+					}
+
 					State = ScreenLockerState.Inactive;
 				});
 		}
@@ -48,6 +54,12 @@ namespace ScreenLocker
 		protected override void OnDestroy()
 		{
 			_tween?.Kill();
+			if (_locker.HasValue)
+			{
+				TouchHelper.Unlock(_locker.Value);
+				_locker = null;
+			}
+
 			base.OnDestroy();
 		}
 

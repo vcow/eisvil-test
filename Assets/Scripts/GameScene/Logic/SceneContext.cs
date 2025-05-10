@@ -34,9 +34,9 @@ namespace GameScene.Logic
 					h => (_, args) => h(args),
 					h => _deadEnemies.CollectionChanged += h,
 					h => _deadEnemies.CollectionChanged -= h)
-				.Select(args => enemyType == EnemyType.Undefined
-					? args.NewItems.Count
-					: args.NewItems.Cast<EnemyData>().Count(data => data.EnemyType == enemyType))
+				.Select(_ => enemyType == EnemyType.Undefined
+					? _deadEnemies.Count
+					: _deadEnemies.Count(data => data.EnemyType == enemyType))
 				.ToReadOnlyReactiveProperty(enemyType == EnemyType.Undefined
 					? _deadEnemies.Count
 					: _deadEnemies.Count(data => data.EnemyType == enemyType))
@@ -53,19 +53,19 @@ namespace GameScene.Logic
 			if (enemyData.IsDead)
 			{
 				_deadEnemies.Add(enemyData);
+			}
+			else
+			{
+				_livingEnemies.Add(enemyData);
 				Observable.FromEvent(h => enemyData.OnDieEvent += h, h => enemyData.OnDieEvent -= h)
 					.Subscribe(_ =>
 					{
-						if (_deadEnemies.Remove(enemyData))
+						if (_livingEnemies.Remove(enemyData))
 						{
 							_deadEnemies.Add(enemyData);
 						}
 					})
 					.AddTo(_disposables);
-			}
-			else
-			{
-				_livingEnemies.Add(enemyData);
 			}
 		}
 

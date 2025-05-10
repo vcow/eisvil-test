@@ -15,9 +15,9 @@ MonoBehaviour:
   _quests:
   - _triggerType: 0
     _targetValue: 60
+  - _triggerType: 1
+    _targetValue: 3
   - _triggerType: 2
-    _targetValue: 15
+    _targetValue: 3
   - _triggerType: 3
-    _targetValue: 15
-  - _triggerType: 4
-    _targetValue: 40
+    _targetValue: 7

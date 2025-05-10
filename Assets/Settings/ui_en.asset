@@ -34,6 +34,26 @@ MonoBehaviour:
     m_Localized: Ok
     m_Metadata:
       m_Items: []
+  - m_Id: 727009931026432
+    m_Localized: DONE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 752063876161536
+    m_Localized: Spend {0} seconds in game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 752371725492224
+    m_Localized: Kill {0} red enemies
+    m_Metadata:
+      m_Items: []
+  - m_Id: 752539963219968
+    m_Localized: Kill {0} blue enemies
+    m_Metadata:
+      m_Items: []
+  - m_Id: 752817957494784
+    m_Localized: Kill {0} enemies
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

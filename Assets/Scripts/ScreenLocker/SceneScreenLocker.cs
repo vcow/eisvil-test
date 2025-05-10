@@ -1,5 +1,6 @@
 using DG.Tweening;
 using Plugins.vcow.ScreenLocker;
+using Plugins.vcow.TouchHelper;
 using UnityEngine;
 
 namespace ScreenLocker
@@ -56,7 +57,7 @@ namespace ScreenLocker
 			{
 				return;
 			}
-			
+
 			_tween?.Kill();
 
 			if (immediately)
@@ -64,6 +65,12 @@ namespace ScreenLocker
 				_tween = null;
 				_canvasGroup.alpha = 0f;
 				_canvasGroup.interactable = false;
+				if (_locker.HasValue)
+				{
+					TouchHelper.Unlock(_locker.Value);
+					_locker = null;
+				}
+
 				State = ScreenLockerState.Inactive;
 			}
 			else
@@ -75,6 +82,12 @@ namespace ScreenLocker
 					{
 						_tween = null;
 						_canvasGroup.interactable = false;
+						if (_locker.HasValue)
+						{
+							TouchHelper.Unlock(_locker.Value);
+							_locker = null;
+						}
+
 						State = ScreenLockerState.Inactive;
 					});
 			}
@@ -91,6 +104,12 @@ namespace ScreenLocker
 		protected override void OnDestroy()
 		{
 			_tween?.Kill();
+			if (_locker.HasValue)
+			{
+				TouchHelper.Unlock(_locker.Value);
+				_locker = null;
+			}
+
 			base.OnDestroy();
 		}
 

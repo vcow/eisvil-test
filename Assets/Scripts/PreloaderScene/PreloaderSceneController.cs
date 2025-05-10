@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using Plugins.vcow.ScreenLocker;
+using R3;
 using ScreenLocker;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -19,6 +20,7 @@ namespace PreloaderScene
 
 		private async void Init()
 		{
+			ObservableSystem.DefaultFrameProvider = UnityFrameProvider.Update;
 			await UniTask.WaitForSeconds(1f);
 			// TODO: Add other initialization tasks here
 

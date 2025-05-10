@@ -14,7 +14,7 @@ namespace GameScene.Quest.Controller
 		public override ReadOnlyReactiveProperty<float> Progress => _progress;
 
 		public MinTimeInGameQuestController(float timeSec, SceneContext sceneContext)
-			: base(QuestTriggerType.MinTimeInGame)
+			: base(QuestTriggerType.MinTimeInGame, new object[] { timeSec })
 		{
 			_isCompleted = new ReactiveProperty<bool>(false).AddTo(_disposables);
 			_progress = new ReactiveProperty<float>(0f).AddTo(_disposables);

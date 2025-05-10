@@ -57,7 +57,7 @@ namespace GameScene.Character
 
 		public void OnAttack(InputAction.CallbackContext context)
 		{
-			if (context.performed)
+			if (context.performed && !TouchHelper.IsLocked)
 			{
 				_humanoid.Attack();
 			}

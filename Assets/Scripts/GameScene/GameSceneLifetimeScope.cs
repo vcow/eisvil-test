@@ -4,6 +4,7 @@ using System.Linq;
 using GameScene.Logic;
 using GameScene.Quest;
 using GameScene.Quest.Controller;
+using R3;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -13,6 +14,8 @@ namespace GameScene
 	[DisallowMultipleComponent]
 	public class GameSceneLifetimeScope : LifetimeScope
 	{
+		private readonly CompositeDisposable _disposables = new();
+
 		protected override void Configure(IContainerBuilder builder)
 		{
 			builder.Register<SceneContext>(Lifetime.Singleton);
@@ -23,15 +26,25 @@ namespace GameScene
 							var sceneContext = resolver.Resolve<SceneContext>();
 							return pair.Key switch
 							{
-								QuestTriggerType.MinTimeInGame => (QuestControllerBase)new MinTimeInGameQuestController(pair.Value, sceneContext),
-								QuestTriggerType.RedEnemiesKilled => new RedEnemiesKilledQuestController(Mathf.FloorToInt(pair.Value), sceneContext),
-								QuestTriggerType.BlueEnemiesKilled => new BlueEnemiesKilledQuestController(Mathf.FloorToInt(pair.Value), sceneContext),
-								QuestTriggerType.TotalEnemiesKilled => new EnemiesKilledQuestController(Mathf.FloorToInt(pair.Value), sceneContext),
+								QuestTriggerType.MinTimeInGame =>
+									(QuestControllerBase)new MinTimeInGameQuestController(pair.Value, sceneContext).AddTo(_disposables),
+								QuestTriggerType.RedEnemiesKilled =>
+									new RedEnemiesKilledQuestController(Mathf.FloorToInt(pair.Value), sceneContext).AddTo(_disposables),
+								QuestTriggerType.BlueEnemiesKilled =>
+									new BlueEnemiesKilledQuestController(Mathf.FloorToInt(pair.Value), sceneContext).AddTo(_disposables),
+								QuestTriggerType.TotalEnemiesKilled =>
+									new EnemiesKilledQuestController(Mathf.FloorToInt(pair.Value), sceneContext).AddTo(_disposables),
 								_ => throw new NotSupportedException($"The quest {pair.Key} isn't supported.")
 							};
 						})
 						.ToArray()
 				, Lifetime.Singleton);
+		}
+
+		protected override void OnDestroy()
+		{
+			_disposables.Dispose();
+			base.OnDestroy();
 		}
 	}
 }
