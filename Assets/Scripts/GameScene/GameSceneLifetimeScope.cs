@@ -4,6 +4,7 @@ using System.Linq;
 using GameScene.Logic;
 using GameScene.Quest;
 using GameScene.Quest.Controller;
+using Plugins.vcow.WindowManager;
 using R3;
 using UnityEngine;
 using VContainer;
@@ -18,6 +19,9 @@ namespace GameScene
 
 		protected override void Configure(IContainerBuilder builder)
 		{
+			builder.RegisterInstance<WindowManager.InstantiateWindowHook>(InstantiateWindowHook);
+			builder.Register<WindowManager>(Lifetime.Singleton).AsImplementedInterfaces();
+
 			builder.Register<SceneContext>(Lifetime.Singleton);
 
 			builder.Register<IReadOnlyList<QuestControllerBase>>(resolver =>
@@ -39,6 +43,11 @@ namespace GameScene
 						})
 						.ToArray()
 				, Lifetime.Singleton);
+		}
+
+		private void InstantiateWindowHook(IWindow window)
+		{
+			Container.Inject(window);
 		}
 
 		protected override void OnDestroy()

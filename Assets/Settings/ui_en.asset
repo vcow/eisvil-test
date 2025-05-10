@@ -54,6 +54,27 @@ MonoBehaviour:
     m_Localized: Kill {0} enemies
     m_Metadata:
       m_Items: []
+  - m_Id: 878485991055360
+    m_Localized: You win!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 887220595580928
+    m_Localized: Zombies vs. Security Guard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 887381568774144
+    m_Localized: 'You are a security guard at a supermarket. Evil zombies have climbed
+      into your garden, dug up and eaten all the potatoes. Show them who''s boss.
+
+
+      Move:
+      WASD, arrows
+
+      Rotate: mouse
+
+      Hit: Space, Enter, LMB'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

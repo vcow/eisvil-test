@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Windows;
 using GameScene.Character;
 using GameScene.Quest.Controller;
 using NUnit.Framework;
 using Plugins.vcow.ScreenLocker;
+using Plugins.vcow.WindowManager;
 using R3;
 using UnityEngine;
 using UnityEngine.AI;
@@ -27,6 +29,7 @@ namespace GameScene
 		[Inject] private readonly IScreenLockerManager _screenLockerManager;
 		[Inject] private readonly IObjectResolver _container;
 		[Inject] private readonly IReadOnlyList<QuestControllerBase> _questList;
+		[Inject] private readonly IWindowManager _windowManager;
 
 		[SerializeField, Header("Enemy spawn")] private Vector2 _fieldSize;
 		[SerializeField] private EnemyPrefabRecord[] _enemyPrefabs;
@@ -84,7 +87,7 @@ namespace GameScene
 
 		private void OnWin()
 		{
-			throw new NotImplementedException();
+			_windowManager.ShowWindow(WinWindow.Id);
 		}
 
 		private void SpawnEnemies()

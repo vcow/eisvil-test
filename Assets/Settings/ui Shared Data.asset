@@ -51,6 +51,18 @@ MonoBehaviour:
     m_Key: TotalEnemiesKilled_description
     m_Metadata:
       m_Items: []
+  - m_Id: 878485991055360
+    m_Key: you_win
+    m_Metadata:
+      m_Items: []
+  - m_Id: 887220595580928
+    m_Key: game_title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 887381568774144
+    m_Key: game_description
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

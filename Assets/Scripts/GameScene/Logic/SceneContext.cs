@@ -31,9 +31,9 @@ namespace GameScene.Logic
 			}
 
 			observable = Observable.FromEvent<NotifyCollectionChangedEventHandler, NotifyCollectionChangedEventArgs>(
-					h => (_, args) => h(args),
-					h => _deadEnemies.CollectionChanged += h,
-					h => _deadEnemies.CollectionChanged -= h)
+					handler => (_, args) => handler(args),
+					handler => _deadEnemies.CollectionChanged += handler,
+					handler => _deadEnemies.CollectionChanged -= handler)
 				.Select(_ => enemyType == EnemyType.Undefined
 					? _deadEnemies.Count
 					: _deadEnemies.Count(data => data.EnemyType == enemyType))
@@ -57,9 +57,14 @@ namespace GameScene.Logic
 			else
 			{
 				_livingEnemies.Add(enemyData);
-				Observable.FromEvent(h => enemyData.OnDieEvent += h, h => enemyData.OnDieEvent -= h)
+				IDisposable h = null;
+				h = Observable.FromEvent(
+						handler => enemyData.OnDieEvent += handler,
+						handler => enemyData.OnDieEvent -= handler)
 					.Subscribe(_ =>
 					{
+						_disposables.Remove(h);
+
 						if (_livingEnemies.Remove(enemyData))
 						{
 							_deadEnemies.Add(enemyData);

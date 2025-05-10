@@ -40,11 +40,6 @@ namespace GameScene.Character
 		{
 			_currentBehaviour?.Dispose();
 			_currentBehaviour = null;
-
-			if (_enemyData is { IsDead: false })
-			{
-				_enemyData.SetIsDead();
-			}
 		}
 
 		private void Update()
@@ -117,10 +112,7 @@ namespace GameScene.Character
 			_currentBehaviour?.Dispose();
 			_currentBehaviour = null;
 
-			if (_enemyData is { IsDead: false })
-			{
-				_enemyData.SetIsDead();
-			}
+			_enemyData.SetIsDead();
 
 			_navMeshAgent.enabled = false;
 			if (_corpseObstacle)
