@@ -101,7 +101,6 @@
 *.blend lfs
 *.blender lfs
 *.dae lfs
-*.mb lfs
 *.ma lfs
 *.3ds lfs
 *.dfx lfs
