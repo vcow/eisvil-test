@@ -12,6 +12,7 @@ namespace GameScene.Quest.Controller
 
 		public override ReadOnlyReactiveProperty<bool> IsCompleted => _isCompleted;
 		public override ReadOnlyReactiveProperty<float> Progress => _progress;
+		public override ReadOnlyReactiveProperty<string> Label { get; } = new ReactiveProperty<string>(string.Empty);
 
 		public MinTimeInGameQuestController(float timeSec, SceneContext sceneContext)
 			: base(QuestTriggerType.MinTimeInGame, new object[] { timeSec })

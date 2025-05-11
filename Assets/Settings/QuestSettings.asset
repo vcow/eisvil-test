@@ -14,10 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _quests:
   - _triggerType: 0
-    _targetValue: 60
+    _targetValue: 120
   - _triggerType: 1
-    _targetValue: 3
+    _targetValue: 10
   - _triggerType: 2
-    _targetValue: 3
-  - _triggerType: 3
-    _targetValue: 7
+    _targetValue: 10

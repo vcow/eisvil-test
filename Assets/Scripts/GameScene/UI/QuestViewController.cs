@@ -13,6 +13,7 @@ namespace GameScene.UI
 		[SerializeField] private TextMeshProUGUI _description;
 		[SerializeField, Header("Progress")] private RectMask2D _progressBarContainer;
 		[SerializeField] private GameObject _doneMarker;
+		[SerializeField] private TextMeshProUGUI _label;
 
 		private readonly CompositeDisposable _disposables = new();
 
@@ -35,6 +36,9 @@ namespace GameScene.UI
 					_doneMarker.SetActive(b);
 				})
 				.AddTo(_disposables);
+			questController.Label
+				.Subscribe(s => _label.text = s)
+				.AddTo(_disposables);
 		}
 
 		private void OnDestroy()
@@ -47,6 +51,7 @@ namespace GameScene.UI
 			Assert.IsNotNull(_description, "_description != null");
 			Assert.IsNotNull(_progressBarContainer, "_progressBarContainer != null");
 			Assert.IsNotNull(_doneMarker, "_doneMarker != null");
+			Assert.IsNotNull(_label, "_label != null");
 		}
 	}
 }

@@ -17,6 +17,7 @@ namespace GameScene.Quest.Controller
 		public ReadOnlyReactiveProperty<string> Description => _description;
 		public abstract ReadOnlyReactiveProperty<bool> IsCompleted { get; }
 		public abstract ReadOnlyReactiveProperty<float> Progress { get; }
+		public abstract ReadOnlyReactiveProperty<string> Label { get; }
 
 		protected QuestControllerBase(QuestTriggerType triggerType, object[] descriptionArgs)
 		{
